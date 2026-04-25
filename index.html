@@ -74,9 +74,11 @@
 
         /* HERO */
         .hero {
-            min-height: 100vh; /* FIX 1: was "auto" */
+            min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
+            text-align: center;
             padding: 8rem 4rem 2rem;
             position: relative;
             overflow: hidden;
@@ -144,13 +146,14 @@
             font-size: 1.1rem;
             line-height: 1.8;
             max-width: 520px;
-            margin-bottom: 2.5rem;
+            margin: 0 auto 2.5rem;
         }
 
         .hero-btns { 
             display: flex; 
             gap: 1rem; 
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn {
@@ -316,6 +319,103 @@
             font-weight: 500; 
         }
 
+        /* PROJECTS */
+        #projects {
+            background: var(--surface);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: rgba(200,169,110,0.1);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(124,106,255,0.1);
+            border: 1px solid rgba(124,106,255,0.3);
+            color: var(--accent2);
+            padding: 0.25rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
         /* EDUCATION */
         #education { 
             background: var(--surface); 
@@ -415,474 +515,4 @@
             position: relative;
             aspect-ratio: 4/3;
             background: var(--bg);
-            border: 1px solid var(--border);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s, filter 0.4s;
-            filter: grayscale(30%);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-            filter: grayscale(0%);
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.85));
-            padding: 2rem 1rem 1rem;
-            color: white;
-            font-size: 0.85rem;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover .gallery-caption { 
-            transform: translateY(0); 
-        }
-
-        /* CONTACT */
-        #contact { 
-            background: var(--bg); 
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-links { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 1rem; 
-            margin-top: 1rem; 
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.2rem 1.5rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--text);
-            transition: all 0.3s;
-        }
-
-        .contact-link:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateX(6px);
-        }
-
-        .contact-link-icon { 
-            font-size: 1.4rem; 
-        }
-
-        .contact-link-label { 
-            font-size: 0.8rem; 
-            color: var(--muted); 
-        }
-
-        .contact-link-value { 
-            font-size: 0.95rem; 
-        }
-
-        .contact-form { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 1rem; 
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 1rem 1.2rem;
-            color: var(--text);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.95rem;
-            transition: border-color 0.3s;
-            outline: none;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus { 
-            border-color: var(--accent); 
-        }
-
-        .contact-form textarea { 
-            resize: vertical; 
-            min-height: 140px; 
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            text-align: center;
-            padding: 2rem;
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
-
-        /* ANIMATION */
-        .floating-badge {
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            nav { padding: 1rem 1.5rem; }
-            .nav-links { gap: 1.2rem; }
-            section { padding: 4rem 1.5rem; }
-            .hero { padding: 5rem 1.5rem 3rem; }
-            .about-grid,
-            .contact-grid { grid-template-columns: 1fr; }
-            .achievements-list { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: 1fr 1fr; }
-            .about-facts { flex-wrap: wrap; }
-        }
-
-        @media (max-width: 480px) {
-            .nav-links { display: none; }
-            .gallery-grid { grid-template-columns: 1fr; }
-        }
-
-        /* SCROLL ANIMATION */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-    <div class="nav-logo">TN.</div>
-    <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#achievements">Achievements</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-content">
-        <div class="hero-tag">ICT Undergraduate · USJ</div>
-        <h1>Thathsarani<br><span>Nawodya</span></h1>
-        <p>A passionate second-year undergraduate in Information & Communication Technology at the University of Sri Jayewardenepura, specializing in Software Technology.</p>
-        <div class="hero-btns">
-            <a href="#contact" class="btn btn-primary">Get in Touch</a>
-            <a href="#achievements" class="btn btn-outline">View Achievements</a>
-        </div>
-    </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-    <div class="reveal">
-        <div class="section-label">Who I Am</div>
-        <div class="section-title">About Me</div>
-        <div class="about-grid">
-            <div class="about-img-wrap">
-                <img src="Thathsarani Nawodya.jpg" alt="Profile Photo">
-            </div>
-            <div class="about-text">
-                <p>I am Thathsarani Navodya, a second-year undergraduate pursuing a Bachelor of Information and Communication Technology (Hons) at the University of Sri Jayewardenepura, Faculty of Technology.</p>
-                <p>I am passionate about the field of ICT and continuously working to develop my knowledge and skills through learning and practical experiences. I have worked as a tutor for A/L ICT students and served as the Co-Head of the paper panel under Prasath Wickramasinha, which has strengthened my subject knowledge, leadership, and communication skills. In addition, I work part-time as a promoter, where I have developed strong interpersonal, communication, and teamwork skills.</p>
-                <p>I am currently exploring different areas within ICT to identify my specialization, with the goal of building a successful career and contributing meaningfully to the ICT industry in Sri Lanka.</p>
-                <div class="about-facts">
-                    <div class="fact">
-                        <div class="fact-num">2+</div>
-                        <div class="fact-label">Years Study</div>
-                    </div>
-                    <div class="fact">
-                        <div class="fact-num">5+</div>
-                        <div class="fact-label">Languages</div>
-                    </div>
-                    <div class="fact">
-                        <div class="fact-num">3+</div>
-                        <div class="fact-label">Certifications</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-    <div class="reveal">
-        <div class="section-label">What I Know</div>
-        <div class="section-title">Technical Skills</div>
-        <div class="skills-grid">
-            <div class="skill-card"><div class="skill-icon">🐍</div><div class="skill-name">Python</div></div>
-            <div class="skill-card"><div class="skill-icon">☕</div><div class="skill-name">Java</div></div>
-            <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">HTML/CSS</div></div>
-            <div class="skill-card"><div class="skill-icon">🐘</div><div class="skill-name">PHP</div></div>
-            <div class="skill-card"><div class="skill-icon">🗄️</div><div class="skill-name">SQL/MySQL</div></div>
-            <div class="skill-card"><div class="skill-icon">⚙️</div><div class="skill-name">C / C#</div></div>
-            <div class="skill-card"><div class="skill-icon">🔷</div><div class="skill-name">.NET</div></div>
-            <div class="skill-card"><div class="skill-icon">🐧</div><div class="skill-name">Linux</div></div>
-        </div>
-    </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-    <div class="reveal">
-        <div class="section-label">My Background</div>
-        <div class="section-title">Education</div>
-        <table class="edu-table">
-            <thead>
-                <tr>
-                    <th>Qualification</th>
-                    <th>Institution</th>
-                    <th>Year</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>BSc (Hons) ICT</td>
-                    <td>University of Sri Jayewardenepura</td>
-                    <td>2025 – Present</td>
-                    <td>Bachelor of Information and Communication Technology, Faculty of Technology</td>
-                </tr>
-                <tr>
-                    <td>G.C.E. A/L</td>
-                    <td>Siridhamma College Galle</td>
-                    <td>2023</td>
-                    <td>Technology Stream</td>
-                </tr>
-                <tr>
-                    <td>Python for Beginners</td>
-                    <td>University of Moratuwa (CODL)</td>
-                    <td>2026</td>
-                    <td>Online certification — Verification: fcNjKOIeEC</td>
-                </tr>
-                <tr>
-                    <td>Web Design for Beginners</td>
-                    <td>University of Moratuwa (CODL)</td>
-                    <td>2026</td>
-                    <td>HTML, CSS, JavaScript, Responsive Design — Verification: fcNjKOIeEC</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-    <div class="reveal">
-        <div class="section-label">Milestones</div>
-        <div class="section-title">Achievements & Activities</div>
-        <ul class="achievements-list">
-            <li>
-                <div class="ach-icon">🏆</div>
-                <div class="ach-text">
-                    <strong>CryptX 2.0 Hackathon</strong>
-                    <span>Participated with team "binarybeast" — placed 23rd out of 64 teams</span>
-                </div>
-            </li>
-            <li>
-                <div class="ach-icon">📜</div>
-                <div class="ach-text">
-                    <strong>ICIET 2025 Pre-Conference</strong>
-                    <span>Certificate of participation added to LinkedIn profile</span>
-                </div>
-            </li>
-            <li>
-                <div class="ach-icon">🌐</div>
-                <div class="ach-text">
-                    <strong>AgenticOps Meetup</strong>
-                    <span>Attended and earned CertDirectory badge (CRD-9JKKHYDM)</span>
-                </div>
-            </li>
-            <li>
-                <div class="ach-icon">🐍</div>
-                <div class="ach-text">
-                    <strong>Python for Beginners Certificate</strong>
-                    <span>Completed online course by University of Moratuwa — April 2026</span>
-                </div>
-            </li>
-            <li>
-                <div class="ach-icon">🌐</div>
-                <div class="ach-text">
-                    <strong>Web Design for Beginners Certificate</strong>
-                    <span>Completed online course by University of Moratuwa — April 2026</span>
-                </div>
-            </li>
-            <li>
-                <div class="ach-icon">💼</div>
-                <div class="ach-text">
-                    <strong>Part-time Promoter</strong>
-                    <span>Customer engagement, brand representation, and coordination experience</span>
-                </div>
-            </li>
-            <li>
-                <div class="ach-icon">👩‍🏫</div>
-                <div class="ach-text">
-                    <strong>A/L ICT Tutor</strong>
-                    <span>Student mentoring, concept clarification, and exam-focused guidance</span>
-                </div>
-            </li>
-            <li>
-                <div class="ach-icon">👥</div>
-                <div class="ach-text">
-                    <strong>Co-Head of the Paper Panel under Prasath Wickramasinghe</strong>
-                    <span>Content development, review coordination, and team leadership</span>
-                </div>
-            </li>
-        </ul>
-    </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-    <div class="reveal">
-        <div class="section-label">Visuals</div>
-        <div class="section-title">Gallery</div>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="Programming.webp" alt="Coding">
-                <div class="gallery-caption">Coding & Development</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Software Projects.webp" alt="Programming">
-                <div class="gallery-caption">Software Projects</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Hacker Rank.png" alt="Teamwork">
-                <div class="gallery-caption">Hackathon & Teamwork</div>
-            </div>
-            <div class="gallery-item">
-                <img src="University.jpg" alt="University">
-                <div class="gallery-caption">University Life</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Tech.jpeg" alt="Tech">
-                <div class="gallery-caption">Technology & Innovation</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-    <div class="reveal">
-        <div class="section-label">Let's Connect</div>
-        <div class="section-title">Contact</div>
-        <div class="contact-grid">
-            <div>
-                <p style="color:var(--muted); margin-bottom:2rem; line-height:1.8;">Feel free to reach out for collaborations, opportunities, or just to say hi!</p>
-                <div class="contact-links">
-                    <a href="https://www.linkedin.com/in/thathsarani-navodya-66b738370" target="_blank" class="contact-link">
-                        <span class="contact-link-icon">💼</span>
-                        <div>
-                            <div class="contact-link-label">LinkedIn</div>
-                            <div class="contact-link-value">thathsarani-navodya</div>
-                        </div>
-                    </a>
-                    <a href="https://github.com/navodyaPeiris" target="_blank" class="contact-link">
-                        <span class="contact-link-icon">🐙</span>
-                        <div>
-                            <div class="contact-link-label">GitHub</div>
-                            <div class="contact-link-value">navodyaPeiris</div>
-                        </div>
-                    </a>
-                    <a href="mailto:thathsaraninavodya04@gmail.com" class="contact-link">
-                        <span class="contact-link-icon">✉️</span>
-                        <div>
-                            <div class="contact-link-label">Email</div>
-                            <div class="contact-link-value">thathsaraninavodya04@gmail.com</div>
-                        </div>
-                    </a>
-                    <a href="https://www.hackerrank.com/profile/thathsaraninavo1" target="_blank" class="contact-link">
-                        <span class="contact-link-icon">💻</span>
-                        <div>
-                            <div class="contact-link-label">HackerRank</div>
-                            <div class="contact-link-value">View my profile</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div>
-                <div class="contact-form">
-                    <input type="text" id="nameInput" placeholder="Your Name">
-                    <input type="email" id="emailInput" placeholder="Your Email">
-                    <textarea id="msgInput" placeholder="Your Message"></textarea>
-                    <button class="btn btn-primary" onclick="sendMessage()">Send Message</button>
-                    <div id="formMsg" style="color:var(--accent); font-size:0.9rem; display:none;">✓ Message sent! Thank you.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <p>© 2026 Thathsarani Navodya · Designed & Built with HTML, CSS & JavaScript</p>
-</footer>
-
-<script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
-
-    // Contact form JS function
-    function sendMessage() {
-        const name = document.getElementById('nameInput').value.trim();
-        const email = document.getElementById('emailInput').value.trim();
-        const msg = document.getElementById('msgInput').value.trim();
-        const formMsg = document.getElementById('formMsg');
-
-        if (!name || !email || !msg) {
-            alert('Please fill in all fields before sending.');
-            return;
-        }
-
-        formMsg.style.display = 'block';
-        document.getElementById('nameInput').value = '';
-        document.getElementById('emailInput').value = '';
-        document.getElementById('msgInput').value = '';
-
-        setTimeout(() => { formMsg.style.display = 'none'; }, 4000);
-    }
-</script>
-
-</body>
-</html>
+            border: 1px solid var
